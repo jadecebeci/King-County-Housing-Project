@@ -4,27 +4,26 @@
 
 ## Table of Contents
 * [Business Understanding](#business-understanding)
-* [Data Understanding and preparation](#data-understanding-and-preparation)
+* [Data Understanding and Preparation](#data-understanding-and-preparation)
 * [Methods](#methods)
 * [Modeling](#modeling)
-* [Checking for Assumptions](#checking for assumptions)
+* [Checking for Assumptions](#checking-for-assumptions)
 * [Conclusion](#conclusion)
 
 ## Business Understanding
 
 We have been approached by an investor wants to invest real estate business about how to accurately appraise homes in Kings County so that they can have idea about home prices it comes to buying and selling homes. We've been given a data set that contains various information about the different homes within Kings County. In this study,we hope to highlight the features available to us in the data that were the most indicative of a property's sale and buy prices.
 
-The highly correlated predictors were determined from the dataset. All assumptions of the multile linear regression were checked, and an optimal final model was achieved by keeping the most influential features only. Based on the multiple linear regression model `grade`, `sqft living area`,`floors`,`renovated` and `bathrooms` were found to be important features that drive the overall sale price of a house in King County.
+The highly correlated predictors were determined from the dataset. All assumptions of the multile linear regression were checked, and an optimal final model was achieved by keeping the most influential features only. Based on the multiple linear regression model `grade`, `sqft living area`,`floors`,`sqft_living15` and `bathrooms` were found to be important features that drive the overall sale price of a house in King County.
 
 ## Data Understanding and Preparation
 
 The data provided to us consist of information pertaining to over 20,000 house sales carried out between 2014 and 2015, located in the data/kc_house_data.csv file in this repository.data dictionary summarizing the information contained in each of the 20 relevant features.
 
-Nearly all practical datasets will contain null values. However, only four columns had missing values to be converted.
+Nearly all practical datasets will contain null values. However, only three columns had missing values to be converted.
 
-* `view` - the number of times viewed by prospective buyers
+* `view` - Quality of view from house
 * `waterfront` - whether the house was located next to a body of water
-* `sqft_basement` - square footage of the home's basement (if it has one)
 * `yr_renovated` - the year a house was renovated (if it ever had been)
 
 In each of these cases, we found it appropriate to fill these columns with their modes, which represented the overwhelming majority of values pertaining to each feature (most houses hadn't been viewed, most were not waterfront properties, etc.)
@@ -34,7 +33,7 @@ In each of these cases, we found it appropriate to fill these columns with their
 We started with inspecting and cleaning the datasets by  checking for the type of data and missing values. Further conducted Exploratory Data Analysis (EDA) and removed nonimportant features based on EDA. Then built multiple linear regression models in OLS statsmodels to determine our strongest correlations. We evaluated each model by checking multicollinearity among different features and then returned to the data to see what could to be changed and  removed outliers to  capture successful model.
 
 ## Modeling 
-
+### Final Model
 <img src="images/7.Final Model.png" width="750">
 
 For optimal final inferential model I tried keep the most influential predictors only. However, our model is not perfect. Its coefficient of determination: R-squared is 0.628. Since we are working with real-world data that is inherently noisy, this is not a bad value.
@@ -66,21 +65,22 @@ The `floors`,`bathrooms`,`sqft_living15` variables are not homoscedastic by the 
 
 <img src="images/Top 5 Features.png" width="750">
 
-After analyzing this King County data, our final model would suggest the main factors in increasing property value to be it’s grade , age of sale , sqft_living of the property as well as batrooms, floors.
+After analyzing this King County data, our final model would suggest the main factors in increasing property value to be it’s grade , bathrooms , sqft_living of the property as well as sqft_living15 and floors.
 
 The sign of a regression coefficient indicates whether there is a positive or negative correlation between each independent variable and the dependent variable in the model. A positive coefficient indicates that as the value of the independent variable increases, the mean of the dependent variable also tends to increase.
 
-Thus when we increase the features with one unit the price will increase in the following way:
+Thus when we `increase` the features with `one unit` the price will `increase` in the following way:
 
-grade: `+20.27%`
-age_at_sale: `+16.73%`
-sqft_living: `+14.50%`
-bathrooms: `+8.87%`
-floors: `+8.36%`
-And also when we increase the features with one unit the price will decrease in the following way:
+- grade: `+20.27%`
+- sqft_living: `+14.50%`
+- bathrooms: `+8.87%`
+- floors: `+8.36%`
 
-bedrooms: `-3,42%`
-sqft_lot15: `-7.33%`
+And also when we `increase` the features with `one unit` the price will `decrease` in the following way:
+
+- bedrooms: `-3,42%`
+- sqft_lot15: `-7.33%`
+
 Suprisingly I had bedrooms has negatif coefficient. it might be because of bathroom and bedroom are interacting features.
 
 ### Interpreting RMSE values
