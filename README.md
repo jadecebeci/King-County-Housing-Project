@@ -47,8 +47,8 @@ For optimal final inferential model I tried keep the most influential predictors
 
 <img src="images/Regression Plot for grade.png" width="750">
 
--Grade is corraleted with target,
--Residuals are somewhat homoskedastic
+- Grade is corraleted with target,
+- Residuals are somewhat homoskedastic
 
 <img src="images/Regression Plot for bathrooms.png" width="750">
 
@@ -56,7 +56,7 @@ For optimal final inferential model I tried keep the most influential predictors
 
 <img src="images/Regression Plot for sqft_living15.png" width="750">
 
-The `floors`,`bathrooms`,`sqft_living15` variables are not homoscedastic by the graphs above meaning the variance decrease as the independent variable gets bigger
+-The `floors`,`bathrooms`,`sqft_living15` variables are not homoscedastic by the graphs above meaning the variance decrease as the independent variable gets bigger
 
 
 ## Conclusion
